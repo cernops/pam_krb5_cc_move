@@ -1,0 +1,65 @@
+.TH PAM_KRB5_CC_MOVE 8 "January 2024" "Version 1.0" "pam_krb5_cc_move Manual"
+
+.SH NAME
+pam_krb5_cc_move \- Pluggable Authentication Module for Kerberos Credential Cache Migration
+
+.SH SYNOPSIS
+.B pam_krb5_cc_move.so
+
+.SH DESCRIPTION
+pam_krb5_cc_move is a PAM (Pluggable Authentication Module) that facilitates the migration of Kerberos credential caches. It is designed to be called during the PAM session phase, specifically in the opening session.
+
+.SH OPTIONS
+.TP
+.B source=
+Specifies the source credential cache format. The default is "KEYRING:persistent:%{uid}".
+
+.TP
+.B destination=
+Specifies the destination credential cache format. The default is "FILE:/run/user/%{uid}/krb5cc".
+
+.TP
+.B debug
+Enables debug mode, providing additional log information.
+
+.SH RETURN VALUES
+.PP
+.BR PAM_SUCCESS
+Successful completion of the credential cache migration.
+
+.PP
+.BR PAM_SESSION_ERR
+Error during the PAM session phase.
+
+.PP
+.BR PAM_AUTH_ERR
+Authentication-related error.
+
+.SH EXAMPLES
+The following PAM configuration demonstrates the usage of pam_krb5_cc_move in the /etc/pam.d/common-session file:
+
+.B
+session required pam_krb5_cc_move.so source=KEYRING:persistent:%{uid} destination=FILE:/tmp/krb5cc debug
+
+.SH FILES
+.TP
+/etc/pam.d/common-session
+PAM configuration file for session management.
+
+.SH SEE ALSO
+.BR pam.conf (5), krb5_ccache (3)
+
+.SH BUGS
+None known.
+
+.SH AUTHOR
+Your Name <steve.traylen@cern.ch>
+
+.SH COPYRIGHT
+Copyright (c) 2024 Your Organization. All rights reserved.
+
+.SH DISCLAIMER
+This module is provided "as is" without any warranty.
+
+.SH NOTES
+

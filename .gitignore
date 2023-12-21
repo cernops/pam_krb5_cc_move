@@ -1,0 +1,8 @@
+CMakeCache.txt
+build
+CMakeFiles/
+cmake_install.cmake
+pam_krb5_cc_move.so
+*.tar.gz
+*.tgz
+src/*.o
