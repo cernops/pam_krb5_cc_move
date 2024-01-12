@@ -14,6 +14,7 @@ pam_krb5_cc_move.so: src/pam_krb5_cc_move.o
 install: all
 	install -d $(DESTDIR)$(MANDIR)/man8
 	install -p -m 0644 man/pam_krb5_cc_move.8 $(DESTDIR)$(MANDIR)/man8/pam_krb5_cc_move.8
+	install -d $(DESTDIR)$(MANDIR)/$(INSTALLDIR)
 	install -p -m 0755 pam_krb5_cc_move.so $(DESTDIR)/$(INSTALLDIR)/pam_krb5_cc_move.so 
 
 clean:
