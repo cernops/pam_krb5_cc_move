@@ -36,4 +36,7 @@ session optional pam_krb5_cc_move.so
 
 Default source and  destination in pam_krb5_cc_move is `KEYRING:persistant:%{uid}` and  `FILE:/run/user/%{uid}/krb5cc` 
 
+## Links
+* pam_xdg_runtime_dir https://github.com/cernops/pam_xdg_runtime_dir
+* pam_krb5_cc_move_dir https://github.com/cernops/pam_krb5_cc_move
 
