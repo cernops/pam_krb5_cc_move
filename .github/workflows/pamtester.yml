@@ -18,4 +18,21 @@ jobs:
       - run: journalctl -n 50
       - run: ls -l /tmp/destination
       - run: sudo -u testuser  klist -f /tmp/destination
+  pamtester_debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt install pamtester gcc make libpam-dev libkrb5-dev krb5-user krb5-k5tls
+      - uses: actions/checkout@v4
+      - run: make
+      - run: sudo make install INSTALLDIR=/usr/lib/x86_64-linux-gnu/security
+      - run: sudo cp pamtester/krb5_cc_move_debug /etc/pam.d/krb5_cc_move
+      - run: cp pamtester/expired_kerberos_token /tmp/source
+      - run: klist -f /tmp/source
+      - run: sudo adduser testuser
+      - run: sudo chown testuser /tmp/source
+      - run: sudo pamtester -v krb5_cc_move testuser open_session
+      - run: journalctl -n 50
+      - run: ls -l /tmp/destination
+      - run: sudo -u testuser  klist -f /tmp/destination
+
 
