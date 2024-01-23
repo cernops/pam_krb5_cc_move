@@ -5,6 +5,7 @@ jobs:
   pamtester:
     runs-on: ubuntu-latest
     steps:
+      - run: suod apt update
       - run: sudo apt install pamtester gcc make libpam-dev libkrb5-dev krb5-user krb5-k5tls
       - uses: actions/checkout@v4
       - run: make
@@ -21,6 +22,7 @@ jobs:
   pamtester_debug:
     runs-on: ubuntu-latest
     steps:
+      - run: suod apt update
       - run: sudo apt install pamtester gcc make libpam-dev libkrb5-dev krb5-user krb5-k5tls
       - uses: actions/checkout@v4
       - run: make
