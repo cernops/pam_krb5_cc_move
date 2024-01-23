@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: make
       - run: sudo make install INSTALLDIR=/usr/lib/x86_64-linux-gnu/security
-      - run: sudo cp pamtester/krb5_cc_move /etc/pam.d/krb5_cc_move
+      - run: sudo cp pamtester/krb5_cc_move_debug /etc/pam.d/krb5_cc_move
       - run: cp pamtester/expired_kerberos_token /tmp/source
       - run: klist -f /tmp/source
       - run: sudo adduser testuser

@@ -1,2 +1,2 @@
 # Just use for testing
-session optional pam_krb5_cc_move.so debug source=FILE:/tmp/source destination=FILE:/tmp/destination
+session optional pam_krb5_cc_move.so source=FILE:/tmp/source destination=FILE:/tmp/destination
